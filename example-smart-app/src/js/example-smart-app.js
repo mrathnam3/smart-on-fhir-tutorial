@@ -25,7 +25,10 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
+          console.log("Observations:: " + JSON.stringify(obv));
+          console.log("patient:: " + JSON.stringify(patient));
           var byCodes = smart.byCodes(obv, 'code');
+          console.log("byCodes:: " + JSON.stringify(byCodes));
           var gender = patient.gender;
 
           var fname = '';
@@ -37,6 +40,7 @@
           }
 
           var height = byCodes('8302-2');
+          var weight = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
